@@ -1,3 +1,5 @@
+import {TITTLETEXT} from "./../components/text.js"
+
 export class Menu extends Phaser.Scene{
     constructor ()
     {
@@ -5,11 +7,12 @@ export class Menu extends Phaser.Scene{
     }
 
     preload(){
-
+        
     }
 
     create(){
-
+        this.add.text(600,400,"INVADERS", TITTLETEXT);
+       
     }
 
     update(){

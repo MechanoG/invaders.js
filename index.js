@@ -1,12 +1,13 @@
 import { Menu } from './scenes/menu.js';
 
-const confing = {
+const config = {
     type: Phaser.AUTO,
     width: 1200,
     height: 800,
-    backgroundColor: '#000000',
+    backgroundColor: '#cf9c9cff',
     parent:'game',
-    scene: {Menu}
+    scene: [Menu]
 }
 
-const game = new Phaser.Game(confing);
+
+const game = new Phaser.Game(config);
