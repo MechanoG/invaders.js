@@ -14,10 +14,15 @@ export class Menu extends Phaser.Scene{
     create(){
         this.add.text(600,400,"INVADERS", TITTLETEXT);
        
+        this. input.once('pointerdown', function(){
+
+            this.scene.start('level1tran');
+
+        }, this)
+
     }
 
     update(){
-
     }
 
 

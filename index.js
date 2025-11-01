@@ -1,5 +1,5 @@
 import { Menu } from './scenes/menu.js';
-import { LevelTran1 } from './scenes/level1Tran.js';
+import { Level1Tran } from './scenes/level1Tran.js';
 import { Level1 } from './scenes/Level1.js';
 import { Level2Tran } from './scenes/level2Tran.js';
 import { Level2 } from './scenes/levl2.js';
@@ -12,7 +12,7 @@ const config = {
     height: 800,
     backgroundColor: '#000',
     parent:'game',
-    scene: [Menu, LevelTran1, Level1, Level2Tran, Level2, Level3Tran, Level3]
+    scene: [Menu, Level1Tran, Level1, Level2Tran, Level2, Level3Tran, Level3]
 }
 
 

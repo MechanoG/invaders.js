@@ -12,7 +12,15 @@ export class Level3Tran extends Phaser.Scene{
 
     create(){
 
-        this.add.text(300,400,"STAGE2\n MISSION START", TITTLETEXT);
+        this.add.text(300,400,"STAGE3\n MISSION START", TITTLETEXT);
+
+        this. input.once('pointerdown', function(){
+
+            
+            this.scene.start('level3' );
+
+        }, this)
+
 
     }
     
