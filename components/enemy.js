@@ -1,28 +1,23 @@
-class enemy {
+//Para objetos en pantalla se debo usar elprite
+// Phaser.physics.arcade.sprite
 
-    constructor(scene){
+export class Enemy1 extends Phaser.Physics.Arcade.Sprite{
 
-        this.relatedScene = scene;
+    constructor(scene, x, y){
+
+        super(scene,x,y);
+       
+               
+        
     }
 
+    /*
     preload(){
-
+        this.relatedScene.load.atlas("sprites", "assets/images/sprites.png", "assets/atlas/spritesMap.json" )
     }
 
     create(){
-
+        this.enemy = this.relatedScene.add.sprite(200, 200, "sprites", "alien2001");
     }
-
-    attack1(){
-
-    }
-
-    attack2(){
-
-    }
-
-    attack3(){
-
-    }
-
+    */
 }

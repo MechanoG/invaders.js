@@ -6,12 +6,19 @@ import { Level2 } from './scenes/levl2.js';
 import { Level3Tran } from './scenes/level3Tran.js';
 import { Level3 } from './scenes/level3.js';
 
+
 const config = {
     type: Phaser.AUTO,
     width: 1200,
     height: 800,
     backgroundColor: '#000',
     parent:'game',
+    physics: {
+        default: 'arcade',
+        arcade:{
+            debug: false,
+        },
+    },
     scene: [Menu, Level1Tran, Level1, Level2Tran, Level2, Level3Tran, Level3]
 }
 
