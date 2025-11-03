@@ -3,10 +3,11 @@
 
 export class Enemy1 extends Phaser.Physics.Arcade.Sprite{
 
-    constructor(scene, x, y){
+    constructor(scene, x, y, ){
 
         super(scene,x,y);
-       
+
+        scene.add.sprite(x, y, "sprite", "alien1001")       
                
         
     }
