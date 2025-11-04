@@ -23,7 +23,14 @@ export class Menu extends Phaser.Scene{
 
         }, this)
 
-        this.monster = new Enemy1(this, 500,500)
+        new Enemy1(this, 500,490);
+        new Enemy1(this, 500,480);
+        new Enemy1(this, 500,500);
+        new Enemy1(this, 500,510);
+        new Enemy1(this, 500,520);
+        new Enemy1(this, 500,530);
+        
+        
 
         
 

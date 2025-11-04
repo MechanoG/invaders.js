@@ -5,13 +5,16 @@ export class Enemy1 extends Phaser.Physics.Arcade.Sprite{
 
     constructor(scene, x, y, ){
 
-        super(scene,x,y);
+        super(scene,x, y,"sprites", "alien1001");
 
-               
+        this.scene.add.existing(this);
+        this.setDisplaySize(50,50);
+
+        /*       
         this.setTexture("alien1001")     
         
         scene.physics.add.sprite(500, 500, "sprites", "alien1001")
-
+        */
                
         
     }
