@@ -23,9 +23,6 @@ export class Menu extends Phaser.Scene{
 
         }, this)
 
-        this.physics.add.sprite(100, 100, "sprites", "alien1001")
-
-        
         this.monster = new Enemy1(this, 500,500)
 
         

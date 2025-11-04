@@ -7,7 +7,11 @@ export class Enemy1 extends Phaser.Physics.Arcade.Sprite{
 
         super(scene,x,y);
 
-        scene.add.sprite(x, y, "sprite", "alien1001")       
+               
+        this.setTexture("alien1001")     
+        
+        scene.physics.add.sprite(500, 500, "sprites", "alien1001")
+
                
         
     }
