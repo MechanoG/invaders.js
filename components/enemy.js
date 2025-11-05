@@ -10,6 +10,9 @@ export class Enemy1 extends Phaser.Physics.Arcade.Sprite{
         this.scene.add.existing(this);
         this.setDisplaySize(50,50);
 
+        this.anims.generateFrameNumbers("sprites", { start: "alien1001", end: "alien1002" });
+
+
         /*       
         this.setTexture("alien1001")     
         

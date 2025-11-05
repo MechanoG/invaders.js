@@ -19,7 +19,7 @@ const config = {
             debug: false,
         },
     },
-    scene: [Menu, Level1Tran, Level1, Level2Tran, Level2, Level3Tran, Level3]
+    scene: [Level1, Menu, Level1Tran, Level2Tran, Level2, Level3Tran, Level3]
 }
 
 
