@@ -29,6 +29,11 @@ export class Level1 extends Phaser.Scene{
         new Bullet(this, 620, 100);
     };
 
-    update(){};
+    update(){
+
+        
+
+        
+    };
 
 } 

@@ -7,18 +7,40 @@ export class Enemy1 extends Phaser.Physics.Arcade.Sprite{
 
         super(scene,x, y,"sprites", "alien1001");
 
-        this.scene.add.existing(this);
-        this.setDisplaySize(50,50);
+        scene.add.existing(this);
+        //Fundamental para que funcione setVelocity y similare
+        scene.physics.add.existing(this);
+        
 
-        this.anims.generateFrameNumbers("sprites", { start: "alien1001", end: "alien1002" });
+        this.setBounce(1);
+        this.setCollideWorldBounds(true);
+        this.setDisplaySize(50,50)
+        
+        this.body.onWorldBounds = true;
+        
+        this.setVelocityX(-400);
+
+        this.anims.create
 
 
+
+        
         /*       
         this.setTexture("alien1001")     
         
         scene.physics.add.sprite(500, 500, "sprites", "alien1001")
         */
                
+        
+    }
+
+    preUpdate (time, delta)
+    {
+        super.preUpdate(time, delta);
+
+        
+
+        this.rotation += 0.05;
         
     }
 
