@@ -1,6 +1,7 @@
 import { TITTLETEXT } from "./../components/text.js";
 import {Enemy1} from "./../components/enemy.js"
 import { Bullet } from "./../components/bullet.js";
+import { Player } from "../components/player.js";
 
 export class Level1 extends Phaser.Scene{
 
@@ -14,8 +15,7 @@ export class Level1 extends Phaser.Scene{
         this.load.atlas("sprites", "assets/images/sprites.png", "assets/atlas/spritesMap.json" )
     };
 
-    create(){
-
+    create(){   
         this.add.text(0, 1, 'Level 1', TITTLETEXT);
 
         this. input.once('pointerdown', function(){
@@ -26,18 +26,37 @@ export class Level1 extends Phaser.Scene{
 
         this.enemy = new Enemy1(this, 600, 100);
 
+
+        
+
         this.anims.create({
-            key: "walk",
-            frames: this.anims.generateFrameNames('sprites', {prefix:'alien100', start:1, end:2}),
+            key: 'walk',
+            frames: this.anims.generateFrameNames('sprites', {prefix:'alien100',start:1,
+                 end:2}),
+            frameRate:5,
             repeat: -1
         });
 
         this.enemy.play('walk');
 
+        
         new Bullet(this, 620, 100);
+
+        let alienTexture = this.textures.get("sprite");
+        let backgroundFrames = alienTexture.getFrameNames()
+
+        for (let frame of backgroundFrames){
+            window.alert(frame);
+        }
+
+        
+        new Player(this, 600 , 750)
+
+
     };
 
-    update(){
+    update(){   
+
 
         
 

@@ -3,7 +3,7 @@
 
 export class Enemy1 extends Phaser.Physics.Arcade.Sprite{
 
-    constructor(scene, x, y, ){
+    constructor(scene, x, y ){
 
         super(scene,x, y,"sprites", "alien1001");
 
@@ -14,7 +14,7 @@ export class Enemy1 extends Phaser.Physics.Arcade.Sprite{
 
         this.setBounce(1);
         this.setCollideWorldBounds(true);
-        this.setDisplaySize(50,50)
+        this.setDisplaySize(60,60)
         
         this.body.onWorldBounds = true;
         
@@ -27,34 +27,13 @@ export class Enemy1 extends Phaser.Physics.Arcade.Sprite{
             loop: true
         })
 
-        /*
-        this.anims.create({
-            key:"alien",
-            frames:scene.anims.generateFrameNames('sprites', {prefix:'alien', start:1, end:2}),
-            frameRate: 2,
-            repeat: -1
-        });
-        */
-
-
-
-
         
-        /*       
-        this.setTexture("alien1001")     
-        
-        scene.physics.add.sprite(500, 500, "sprites", "alien1001")
-        */
-               
         
     }
 
     preUpdate (time, delta)
     {
-        super.preUpdate(time, delta);
-        this.play('pulse');
-
-        
+        super.preUpdate(time, delta);        
     }
 
     shoot(){
@@ -65,9 +44,10 @@ export class Enemy1 extends Phaser.Physics.Arcade.Sprite{
     preload(){
         this.relatedScene.load.atlas("sprites", "assets/images/sprites.png", "assets/atlas/spritesMap.json" )
     }
+    */
 
     create(){
-        this.enemy = this.relatedScene.add.sprite(200, 200, "sprites", "alien2001");
+        
     }
-    */
+    
 }
