@@ -13,6 +13,9 @@ export class Player extends Phaser.Physics.Arcade.Image{
 
         this.setCollideWorldBounds(true);
 
+        this.setInteractive();
+
+        this.on('keyup', ()=> {window.alert("m")})
         
         
     }
