@@ -24,7 +24,15 @@ export class Level1 extends Phaser.Scene{
 
         }, this)
 
-        new Enemy1(this, 600, 100);
+        this.enemy = new Enemy1(this, 600, 100);
+
+        this.anims.create({
+            key: "walk",
+            frames: this.anims.generateFrameNames('sprites', {prefix:'alien100', start:1, end:2}),
+            repeat: -1
+        });
+
+        this.enemy.play('walk');
 
         new Bullet(this, 620, 100);
     };

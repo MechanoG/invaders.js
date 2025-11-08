@@ -20,7 +20,22 @@ export class Enemy1 extends Phaser.Physics.Arcade.Sprite{
         
         this.setVelocityX(-400);
 
-        this.anims.create
+        this.scene.time.addEvent({
+            delay: Phaser.Math.Between(2000,6000),
+            callback: this.shoot,
+            callbackScope: this,
+            loop: true
+        })
+
+        /*
+        this.anims.create({
+            key:"alien",
+            frames:scene.anims.generateFrameNames('sprites', {prefix:'alien', start:1, end:2}),
+            frameRate: 2,
+            repeat: -1
+        });
+        */
+
 
 
 
@@ -37,11 +52,13 @@ export class Enemy1 extends Phaser.Physics.Arcade.Sprite{
     preUpdate (time, delta)
     {
         super.preUpdate(time, delta);
+        this.play('pulse');
 
         
+    }
 
-        this.rotation += 0.05;
-        
+    shoot(){
+        console.log("Pium Pium");
     }
 
     /*
