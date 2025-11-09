@@ -21,15 +21,15 @@ export class Enemy1 extends Phaser.Physics.Arcade.Sprite{
         this.setVelocityX(-400);
 
         this.scene.time.addEvent({
-            delay: Phaser.Math.Between(2000,6000),
+            delay: Phaser.Math.Between(500,6000),
             callback: this.shoot,
             callbackScope: this,
             loop: true
         })
-
-        
+       
         
     }
+
 
     preUpdate (time, delta)
     {

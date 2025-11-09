@@ -18,16 +18,13 @@ export class Level1 extends Phaser.Scene{
     create(){   
         this.add.text(0, 1, 'Level 1', TITTLETEXT);
 
-        this. input.once('pointerdown', function(){
+        this.input.once('pointerdown', function(){
 
             this.scene.start('level2tran');
 
         }, this)
 
-        this.enemy = new Enemy1(this, 600, 100);
-
-
-        
+        this.enemy = new Enemy1(this, 600, 100);       
 
         this.anims.create({
             key: 'walk',
@@ -39,23 +36,27 @@ export class Level1 extends Phaser.Scene{
 
         this.enemy.play('walk');
 
-        
-        new Bullet(this, 620, 100);
-
         let alienTexture = this.textures.get("sprite");
         let backgroundFrames = alienTexture.getFrameNames()
 
         for (let frame of backgroundFrames){
             window.alert(frame);
         }
-
         
-        new Player(this, 600 , 750)
-
+        this.player = new Player(this, 600 , 750)
+        
+        this.cursor = this.input.keyboard.createCursorKeys()
 
     };
 
-    update(){   
+    update(){
+        if(this.cursor.left.isDown){
+            this.player.setVelocityX(-400);
+        }else if(this.cursor.right.isDown){
+            this.player.setVelocityX(400);
+        }else{
+            this.player.setVelocityX(0);
+        } 
 
 
         
