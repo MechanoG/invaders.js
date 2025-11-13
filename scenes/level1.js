@@ -1,7 +1,7 @@
 import { TITTLETEXT } from "./../components/text.js";
 import {Enemy1} from "./../components/enemy.js"
 import { Bullet } from "./../components/bullet.js";
-import { Player } from "../components/player.js";
+import { Player } from "./../components/player.js";
 
 export class Level1 extends Phaser.Scene{
 
@@ -49,19 +49,8 @@ export class Level1 extends Phaser.Scene{
 
     };
 
-    update(){
-        if(this.cursor.left.isDown){
-            this.player.setVelocityX(-400);
-        }else if(this.cursor.right.isDown){
-            this.player.setVelocityX(400);
-        }else{
-            this.player.setVelocityX(0);
-        } 
-
-
-        
-
-        
+    update(time){
+        this.player.preUpdate(time);
     };
 
 }   

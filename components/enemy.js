@@ -1,7 +1,10 @@
 //Para objetos en pantalla se debo usar elprite
 // Phaser.physics.arcade.sprite
+import { EnemyBullet } from "./bullet.js";
 
 export class Enemy1 extends Phaser.Physics.Arcade.Sprite{
+    ///Necesito que las balas salgan una 
+    
 
     constructor(scene, x, y ){
 
@@ -26,8 +29,7 @@ export class Enemy1 extends Phaser.Physics.Arcade.Sprite{
             callbackScope: this,
             loop: true
         })
-       
-        
+
     }
 
 
@@ -38,6 +40,7 @@ export class Enemy1 extends Phaser.Physics.Arcade.Sprite{
 
     shoot(){
         console.log("Pium Pium");
+        new EnemyBullet(this.scene, this.x, this.y-10, 700)
     }
 
     /*
@@ -45,6 +48,10 @@ export class Enemy1 extends Phaser.Physics.Arcade.Sprite{
         this.relatedScene.load.atlas("sprites", "assets/images/sprites.png", "assets/atlas/spritesMap.json" )
     }
     */
+
+    test(){
+        console.log("Calling test from enemy")
+    }
 
     create(){
         
