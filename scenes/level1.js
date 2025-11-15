@@ -1,6 +1,5 @@
 import { TITTLETEXT } from "./../components/text.js";
 import {Enemy1} from "./../components/enemy.js"
-import { Bullet } from "./../components/bullet.js";
 import { Player } from "./../components/player.js";
 
 export class Level1 extends Phaser.Scene{
@@ -23,8 +22,7 @@ export class Level1 extends Phaser.Scene{
             this.scene.start('level2tran');
 
         }, this)
-
-        this.enemy = new Enemy1(this, 600, 100);       
+     
 
         this.anims.create({
             key: 'walk',
@@ -34,7 +32,6 @@ export class Level1 extends Phaser.Scene{
             repeat: -1
         });
 
-        this.enemy.play('walk');
 
         let alienTexture = this.textures.get("sprite");
         let backgroundFrames = alienTexture.getFrameNames()
@@ -43,9 +40,30 @@ export class Level1 extends Phaser.Scene{
             window.alert(frame);
         }
         
-        this.player = new Player(this, 600 , 750)
+        this.player = new Player(this, 400,1100);
+
+        this.enemies = this.physics.add.group({
+            classType : Enemy1,
+            runChildUpdate : true
+        })
+
         
-        this.cursor = this.input.keyboard.createCursorKeys()
+        for(let x = 5; x <= 15; x++){
+            for(let y = 1; y <=5; y++){
+                let enemy = this.enemies.create(x*70, y*50)
+                enemy.play('walk'); 
+            }
+
+        }
+
+        /*
+        this.group= this.add.group(this.enemy, this.config)
+
+        console.log("Enemies = " + this.group.getLength());
+        */
+
+
+
 
     };
 

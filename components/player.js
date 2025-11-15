@@ -1,13 +1,10 @@
 //Objeto de jugador
-
 import { Bullet } from "./bullet.js";
 
 export class Player extends Phaser.Physics.Arcade.Image{
     constructor(scene, x, y){
 
         super(scene, x, y, "sprites","player0000");
-
-        
 
         scene.add.existing(this)
         //Fundamental para que funcione setVelocity y similare
@@ -23,9 +20,6 @@ export class Player extends Phaser.Physics.Arcade.Image{
         this.cursor = this.scene.input.keyboard.createCursorKeys();
 
         
-        
-
-
     }
 
     preUpdate(time){
@@ -37,7 +31,6 @@ export class Player extends Phaser.Physics.Arcade.Image{
             this.setVelocityX(400);
         }else if(this.cursor.space.isDown &&  time > this.lastShot + this.cooldown){
             this.shoot(time);
-            
         }else{
             this.setVelocityX(0);
         } 

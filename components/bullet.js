@@ -31,7 +31,7 @@ class EnemyBullet extends Phaser.Physics.Arcade.Sprite {
     }
 
     preUpdate(time, delta){
-        if (this.y < 5 ){
+        if (this.y > 795 ){
             this.destroy();
             console.log("Destroyed")
         }
