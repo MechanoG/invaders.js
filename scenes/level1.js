@@ -59,18 +59,27 @@ export class Level1 extends Phaser.Scene{
 
         //Colisiones        
 
-        this.flag;
+        this.leftFlag;
+        this.rigthFlag;
 
     };
 
     update(){
         
         console.log("Update executed")
-        this.flag = this.enemies.getChildren().some((enemie) => enemie.x > 1140);
+        this.rigthFlag = this.enemies.getChildren().some((enemie) => enemie.x >= 1170);
+        this.leftFlag = this.enemies.getChildren().some((enemie) => enemie.x <= 30);
 
-        if(this.flag){
+
+
+        if(this.rigthFlag){
             console.log(" Rigt Limit reach");
             this.changeMovement();
+        }
+
+        if(this.leftFlag){
+            console.log(" Left Limit reach");
+            this.changeMovement2();
         }
 
        
@@ -80,6 +89,13 @@ export class Level1 extends Phaser.Scene{
     changeMovement(){
         this.enemies.children.each(enemy =>{
             enemy.setVelocityX(-100);
+            
+        })
+    }
+
+    changeMovement2(){
+        this.enemies.children.each(enemy =>{
+            enemy.setVelocityX(100);
             
         })
     }
