@@ -6,6 +6,7 @@ import { Bullet } from "./../components/bullet.js";
 
 export class Level1 extends Phaser.Scene{
 
+  
     constructor(){
         
         super({ key : 'level1'});
@@ -55,34 +56,33 @@ export class Level1 extends Phaser.Scene{
             enemy.setVelocityX(enemy.speed);
             
         })
-        
-        
 
         //Colisiones        
 
-    };
-
-    update(time){
-        this.enemies.children.each(enemy => {
-            if (enemy.x == 1000){
-                this.changeRoute();
-                return false;
-            }
-
-            
-            
-        });
-
-
-
+        this.flag;
 
     };
 
-    changeRoute(){
-        this.enemies.children.each(enemy=>{
-            enemy.speed = enemy.speed*-1;
-            enemy.setVelocityX(enemy.speed);
+    update(){
+        
+        console.log("Update executed")
+        this.flag = this.enemies.getChildren().some((enemie) => enemie.x > 1140);
+
+        if(this.flag){
+            console.log(" Rigt Limit reach");
+            this.changeMovement();
+        }
+
+       
+
+    };
+
+    changeMovement(){
+        this.enemies.children.each(enemy =>{
+            enemy.setVelocityX(-100);
+            
         })
     }
+
 
 }   

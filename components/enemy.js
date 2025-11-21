@@ -31,12 +31,7 @@ export class Enemy1 extends Phaser.Physics.Arcade.Sprite{
     {   
          super.preUpdate(time, delta);
         
-         /*
-        this.setVelocityX(this.speed);
-        this.setBounce(1);
-        this.setCollideWorldBounds(true);
-        this.body.onWorldBounds = true;
-        */
+        
         
     }
 
