@@ -13,16 +13,10 @@ export class Enemy1 extends Phaser.Physics.Arcade.Sprite{
         scene.add.existing(this);
         //Fundamental para que funcione setVelocity y similare
         scene.physics.add.existing(this);
-        
+       
 
-        this.setBounce(1);
-        this.setCollideWorldBounds(true);
-        this.setDisplaySize(60,60)
+        this.setDisplaySize(60,60)       
         
-        this.body.onWorldBounds = true;
-        
-        this.setVelocityX(400);
-
         this.scene.time.addEvent({
             delay: Phaser.Math.Between(500,6000),
             callback: this.shoot,
@@ -34,8 +28,16 @@ export class Enemy1 extends Phaser.Physics.Arcade.Sprite{
 
 
     preUpdate (time, delta)
-    {
-        super.preUpdate(time, delta);        
+    {   
+         super.preUpdate(time, delta);
+        
+         /*
+        this.setVelocityX(this.speed);
+        this.setBounce(1);
+        this.setCollideWorldBounds(true);
+        this.body.onWorldBounds = true;
+        */
+        
     }
 
     shoot(){
@@ -48,10 +50,6 @@ export class Enemy1 extends Phaser.Physics.Arcade.Sprite{
         this.relatedScene.load.atlas("sprites", "assets/images/sprites.png", "assets/atlas/spritesMap.json" )
     }
     */
-
-    test(){
-        console.log("Calling test from enemy")
-    }
 
     create(){
         

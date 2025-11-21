@@ -1,6 +1,8 @@
 import { TITTLETEXT } from "./../components/text.js";
 import {Enemy1} from "./../components/enemy.js"
 import { Player } from "./../components/player.js";
+import { Bullet } from "./../components/bullet.js";
+
 
 export class Level1 extends Phaser.Scene{
 
@@ -31,44 +33,56 @@ export class Level1 extends Phaser.Scene{
             frameRate:5,
             repeat: -1
         });
-
-
-        let alienTexture = this.textures.get("sprite");
-        let backgroundFrames = alienTexture.getFrameNames()
-
-        for (let frame of backgroundFrames){
-            window.alert(frame);
-        }
+      
+        //Jugador
         
         this.player = new Player(this, 400,1100);
 
-        this.enemies = this.physics.add.group({
-            classType : Enemy1,
-            runChildUpdate : true
-        })
-
+        //Enemigos
+        this.enemies = this.physics.add.group();
         
-        for(let x = 5; x <= 15; x++){
+        for(let x = 2; x <= 12; x++){
             for(let y = 1; y <=5; y++){
-                let enemy = this.enemies.create(x*70, y*50)
-                enemy.play('walk'); 
+                this.enemies.add(new Enemy1(this,x*70 -70, y*50)); 
             }
+        } 
 
-        }
+        this.enemies.children.each( enemy =>{
+            enemy.play("walk");
+            enemy.setCollideWorldBounds(true);
+            enemy.body.onWorldBounds = true;
+            enemy.speed = 100;
+            enemy.setVelocityX(enemy.speed);
+            
+        })
+        
+        
 
-        /*
-        this.group= this.add.group(this.enemy, this.config)
-
-        console.log("Enemies = " + this.group.getLength());
-        */
-
-
-
+        //Colisiones        
 
     };
 
     update(time){
-        this.player.preUpdate(time);
+        this.enemies.children.each(enemy => {
+            if (enemy.x == 1000){
+                this.changeRoute();
+                return false;
+            }
+
+            
+            
+        });
+
+
+
+
     };
+
+    changeRoute(){
+        this.enemies.children.each(enemy=>{
+            enemy.speed = enemy.speed*-1;
+            enemy.setVelocityX(enemy.speed);
+        })
+    }
 
 }   

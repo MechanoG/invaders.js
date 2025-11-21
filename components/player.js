@@ -39,7 +39,7 @@ export class Player extends Phaser.Physics.Arcade.Image{
     }
 
     shoot(time){
-        new Bullet (this.scene, this.x, this.y-10, -700 )
+        new Bullet (this.scene, this.x+4, this.y-10, -700 )
         this.lastShot = time;
     }
 
