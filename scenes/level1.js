@@ -74,23 +74,34 @@ export class Level1 extends Phaser.Scene{
 
         if(this.rigthFlag){
             console.log(" Rigt Limit reach");
-            this.changeMovement();
         }
 
         if(this.leftFlag){
             console.log(" Left Limit reach");
-            this.changeMovement2();
         }
 
-       
+        this.changeMovement(this.leftFlag, this.rigthFlag);
 
     };
 
-    changeMovement(){
-        this.enemies.children.each(enemy =>{
-            enemy.setVelocityX(-100);
-            
-        })
+    changeMovement(lFlag, rFlag){
+
+        if(lFlag){
+            this.enemies.children.each(enemy =>{
+                enemy.setVelocityX(100);
+                enemy.y +=30;  
+            })
+        }    
+        
+        if(rFlag){
+            this.enemies.children.each(enemy =>{
+                enemy.setVelocityX(-100);
+                enemy.y +=30;  
+            })
+        }
+
+
+        
     }
 
     changeMovement2(){
