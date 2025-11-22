@@ -40,7 +40,9 @@ export class Level1 extends Phaser.Scene{
         this.player = new Player(this, 400,1100);
 
         //Enemigos
-        this.enemies = this.physics.add.group();
+        this.enemies = this.physics.add.group({
+            immovable: true,
+        });
         
         for(let x = 2; x <= 12; x++){
             for(let y = 1; y <=5; y++){
@@ -54,6 +56,7 @@ export class Level1 extends Phaser.Scene{
             enemy.body.onWorldBounds = true;
             enemy.speed = 100;
             enemy.setVelocityX(enemy.speed);
+            
             
         })
 

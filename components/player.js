@@ -24,7 +24,6 @@ export class Player extends Phaser.Physics.Arcade.Image{
 
     preUpdate(time){
 
-        
         if(this.cursor.left.isDown){
             this.setVelocityX(-400);
         }else if(this.cursor.right.isDown){
@@ -39,8 +38,23 @@ export class Player extends Phaser.Physics.Arcade.Image{
     }
 
     shoot(time){
-        new Bullet (this.scene, this.x+4, this.y-10, -700 )
+        let bullet = new Bullet (this.scene, this.x+4, this.y-10, -700 )
         this.lastShot = time;
+        this.scene.physics.add.collider(
+            bullet, 
+            this.scene.enemies,            
+            (bullet, enemy)=>{
+                
+                
+                enemy.body.enable = false;
+                enemy.setVisible(false);
+                enemy.shootEvent.remove();
+                bullet.destroy();
+
+            },
+            null,
+            this.scene
+        );
     }
 
     

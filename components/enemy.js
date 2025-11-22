@@ -15,14 +15,14 @@ export class Enemy1 extends Phaser.Physics.Arcade.Sprite{
         scene.physics.add.existing(this);
        
 
-        this.setDisplaySize(60,60)       
+        this.setDisplaySize(60,60);       
         
-        this.scene.time.addEvent({
-            delay: Phaser.Math.Between(500,6000),
-            callback: this.shoot,
-            callbackScope: this,
-            loop: true
-        })
+        this.shootEvent = this.scene.time.addEvent({
+                            delay: Phaser.Math.Between(500,6000),
+                            callback: this.shoot,
+                            callbackScope: this,
+                            loop: true
+                        })
  
     }
 
