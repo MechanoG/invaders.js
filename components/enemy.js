@@ -37,7 +37,25 @@ export class Enemy1 extends Phaser.Physics.Arcade.Sprite{
 
     shoot(){
         console.log("Pium Pium");
-        new EnemyBullet(this.scene, this.x, this.y-10, 700)
+        let bullet = new EnemyBullet(this.scene, this.x, this.y-10, 700);
+        this.scene.physics.add.collider(
+            bullet, 
+            this.scene.player,            
+            (bullet, player)=>{
+                
+                /*
+                enemy.body.enable = false;
+                enemy.setVisible(false);
+                enemy.shootEvent.remove();*/
+                bullet.destroy();
+                player.destroy();
+
+            },
+            null,
+            this.scene
+        );
+
+
     }
 
     /*
