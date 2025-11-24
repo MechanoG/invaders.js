@@ -6,7 +6,7 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
         this.scene.physics.add.existing(this)
         this.setVelocityY(speed);
 
-        this.setDisplaySize(50,50);
+        this.setDisplaySize(3,18);
         
     }
 
@@ -26,7 +26,7 @@ class EnemyBullet extends Phaser.Physics.Arcade.Sprite {
         this.scene.physics.add.existing(this)
         this.setVelocityY(speed);
 
-        this.setDisplaySize(50,50);
+        this.setDisplaySize(3, 18);
         
     }
 

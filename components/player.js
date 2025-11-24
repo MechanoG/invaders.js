@@ -10,7 +10,7 @@ export class Player extends Phaser.Physics.Arcade.Image{
         //Fundamental para que funcione setVelocity y similare
         scene.physics.add.existing(this);
 
-        this.setDisplaySize(60,60);
+        this.setDisplaySize(45,50);
 
         this.setCollideWorldBounds(true);
 

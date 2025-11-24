@@ -17,11 +17,11 @@
             },
             
             "bullet0001":{
-                "frame":{"x":32,"y":0,"w":16,"h":16},
+                "frame":{"x":39,"y":5,"w":1,"h":6},
                 "rotated":false,
                 "trimmed":false,
                 "spriteSourceSize":{"x":0,"y":0,"w":16,"h":16},
-                "sourceSize":{"w":16,"h":16}
+                "sourceSize":{"w":1,"h":6}
             },
 
             "big0001":{
@@ -33,11 +33,11 @@
             },
             
             "player0000":{
-                "frame":{"x":64,"y":0,"w":16,"h":16},
+                "frame":{"x":68,"y":4,"w":9,"h":10},
                 "rotated":false,
                 "trimmed":false,
                 "spriteSourceSize":{"x":0,"y":0,"w":16,"h":16},
-                "sourceSize":{"w":16,"h":16}
+                "sourceSize":{"w":9,"h":16}
             },
             
             "alien2001":{
