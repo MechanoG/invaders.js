@@ -7,4 +7,12 @@ const TITTLETEXT = {
     strokeThickness: 1
 }
 
-export {TITTLETEXT}
+const LEVELTEXT = {
+    fontFamily: "arial, sans-seriff",
+    fontSize: 50,
+    backgroundColor: "#000",
+    color:"#fff",
+    strokeThickness: 1
+}
+
+export {TITTLETEXT, LEVELTEXT}

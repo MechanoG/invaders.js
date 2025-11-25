@@ -38,7 +38,7 @@ export class Player extends Phaser.Physics.Arcade.Image{
     }
 
     shoot(time){
-        let bullet = new Bullet (this.scene, this.x+4, this.y-10, -700 )
+        let bullet = new Bullet (this.scene, this.x, this.y-10, -700 )
         this.lastShot = time;
         this.scene.physics.add.collider(
             bullet, 
@@ -49,16 +49,15 @@ export class Player extends Phaser.Physics.Arcade.Image{
                 enemy.body.enable = false;
                 enemy.setVisible(false);
                 enemy.shootEvent.remove();
+                enemy.acceleration();
                 bullet.destroy();
+                
 
             },
             null,
             this.scene
         );
     }
-
-    
-    
 
 
 }
