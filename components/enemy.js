@@ -67,9 +67,15 @@ export class Enemy1 extends Phaser.Physics.Arcade.Sprite{
 
     acceleration(){
         let iniVel=this.scene.enemiesVel
-        this.scene.enemiesVel = iniVel * 1.01;
+        this.scene.enemiesVel = iniVel * 1.05;
         this.scene.enemies.children.each( enemy =>{
-            enemy.setVelocityX(this.scene.enemiesVel)
+
+            if(enemy.forward){
+                enemy.setVelocityX(this.scene.enemiesVel)
+            }else{
+                enemy.setVelocityX(- this.scene.enemiesVel)
+            }
+            
             
         })
     

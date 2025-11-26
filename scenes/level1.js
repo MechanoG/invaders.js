@@ -19,7 +19,7 @@ export class Level1 extends Phaser.Scene{
 
     create(){
         this.lives = 2;   
-        this.add.text(0, 0, 'STAGE - 1', LEVELTEXT);
+        this.add.text(50, 0, 'STAGE - 1', LEVELTEXT);
         this.add.text(1050, 0, 'x', LEVELTEXT);
         this.add.image(1000,29, "sprites","player0000").setDisplaySize(45,50);
         this.add.text(1100,0, this.lives, LEVELTEXT);
@@ -49,7 +49,7 @@ export class Level1 extends Phaser.Scene{
             immovable: true,
         });
 
-        this.enemiesVel = 50;
+        this.enemiesVel = 100;
         
         for(let x = 2; x <= 12; x++){
             for(let y = 1.8; y <=5; y++){
@@ -62,6 +62,7 @@ export class Level1 extends Phaser.Scene{
             enemy.setCollideWorldBounds(true);
             enemy.body.onWorldBounds = true;
             enemy.setVelocityX(this.enemiesVel)
+            enemy.forward = true;
             
         })
 
@@ -75,38 +76,73 @@ export class Level1 extends Phaser.Scene{
     update(){
         
         console.log("Update executed")
+        console.log(`Velocidad de enemigos: ${this.enemiesVel}`)
+        
         this.rigthFlag = this.enemies.getChildren().some((enemie) => enemie.x >= 1170);
         this.leftFlag = this.enemies.getChildren().some((enemie) => enemie.x <= 30);
-
-
-        console.log(`Enemies velocity = ${this.enemiesVel}`)
-        if(this.rigthFlag){
-            console.log(" Rigt Limit reach");
+        
+        if (this.leftFlag || this.rigthFlag){
+            this.changeMovement(this.leftFlag, this.rigthFlag);     
         }
+        
 
-        if(this.leftFlag){
-            console.log(" Left Limit reach");
-        }
-
-        this.changeMovement(this.leftFlag, this.rigthFlag);
+        
 
     };
 
     changeMovement(lFlag, rFlag){
 
         if(lFlag){
+            
             this.enemies.children.each(enemy =>{
                 enemy.setVelocityX(this.enemiesVel);
+                enemy.forward = true;
                 enemy.y +=30;  
             })
+
         }else if(rFlag){
+            
             this.enemies.children.each(enemy =>{
                 enemy.setVelocityX(-this.enemiesVel);
+                enemy.forward = false;
                 enemy.y +=30;  
             })
         }
          
     }
+
+    /*
+
+    changeMovement(lFlag, rFlag){
+    
+    if(lFlag){
+        
+        this.enemiesVel *= -1; // INVERTIR el valor de la variable
+        
+        this.enemies.children.each(enemy =>{
+            enemy.setVelocityX(this.enemiesVel); // Usar el nuevo valor
+            enemy.y +=30;  
+        })
+    }else if(rFlag){
+        
+        this.enemiesVel *= -1; // INVERTIR el valor de la variable
+        
+        this.enemies.children.each(enemy =>{
+            enemy.setVelocityX(this.enemiesVel); // Usar el nuevo valor
+            enemy.y +=30;  
+        })
+    }
+}
+
+
+
+    */
+
+
+
+
+
+
 
 
 }   
