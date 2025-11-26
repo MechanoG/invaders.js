@@ -49,16 +49,19 @@ export class Enemy1 extends Phaser.Physics.Arcade.Sprite{
             (bullet, player,)=>{
                 
                 
-                enemy.body.enable = false;
-                enemy.setVisible(false);
-                enemy.shootEvent.remove();
+                player.body.enable = false;
+                player.setVisible(false);
+                
+                
+                player.hurt();
                 bullet.destroy();
-                player.destroy();
+               
 
             },
             null,
             this.scene
         ); 
+        
         */
         
 
@@ -81,14 +84,16 @@ export class Enemy1 extends Phaser.Physics.Arcade.Sprite{
     
     }
 
+    runEx(){
+        this.scene.runExplotion(this);
+    }
+
     /*
     preload(){
         this.relatedScene.load.atlas("sprites", "assets/images/sprites.png", "assets/atlas/spritesMap.json" )
     }
     */
 
-    create(){
-        
-    }
+    
     
 }

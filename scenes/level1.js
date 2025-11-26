@@ -19,10 +19,10 @@ export class Level1 extends Phaser.Scene{
 
     create(){
         this.lives = 2;   
-        this.add.text(50, 0, 'STAGE - 1', LEVELTEXT);
+        this.stageName = this.add.text(50, 0, 'STAGE - 1', LEVELTEXT);
         this.add.text(1050, 0, 'x', LEVELTEXT);
         this.add.image(1000,29, "sprites","player0000").setDisplaySize(45,50);
-        this.add.text(1100,0, this.lives, LEVELTEXT);
+        this.livesText = this.add.text(1100,0, this.lives, LEVELTEXT);
 
 
         this.input.once('pointerdown', function(){
@@ -31,7 +31,7 @@ export class Level1 extends Phaser.Scene{
 
         }, this)
      
-
+        //Anims
         this.anims.create({
             key: 'walk',
             frames: this.anims.generateFrameNames('sprites', {prefix:'alien100',start:1,
@@ -39,10 +39,17 @@ export class Level1 extends Phaser.Scene{
             frameRate:5,
             repeat: -1
         });
+
+        this.anims.create({
+            key: 'explotion',
+            frames: this.anims.generateFrameNames('sprites', {prefix:'explot000', start:1, end:3}),
+            frameRate: 4,
+            repeat:0
+        })
       
         //Jugador
         
-        this.player = new Player(this, 0, 750);
+        this.player = new Player(this, 600, 750);
 
         //Enemigos
         this.enemies = this.physics.add.group({
@@ -97,7 +104,7 @@ export class Level1 extends Phaser.Scene{
             this.enemies.children.each(enemy =>{
                 enemy.setVelocityX(this.enemiesVel);
                 enemy.forward = true;
-                enemy.y +=30;  
+                //enemy.y +=20;  
             })
 
         }else if(rFlag){
@@ -105,44 +112,16 @@ export class Level1 extends Phaser.Scene{
             this.enemies.children.each(enemy =>{
                 enemy.setVelocityX(-this.enemiesVel);
                 enemy.forward = false;
-                enemy.y +=30;  
+                //enemy.y +=20;  
             })
         }
          
     }
 
-    /*
-
-    changeMovement(lFlag, rFlag){
-    
-    if(lFlag){
-        
-        this.enemiesVel *= -1; // INVERTIR el valor de la variable
-        
-        this.enemies.children.each(enemy =>{
-            enemy.setVelocityX(this.enemiesVel); // Usar el nuevo valor
-            enemy.y +=30;  
-        })
-    }else if(rFlag){
-        
-        this.enemiesVel *= -1; // INVERTIR el valor de la variable
-        
-        this.enemies.children.each(enemy =>{
-            enemy.setVelocityX(this.enemiesVel); // Usar el nuevo valor
-            enemy.y +=30;  
-        })
+    runExplotion(enemiObject){
+        enemiObject.play("explotion")
     }
-}
 
-
-
-    */
-
-
-
-
-
-
-
+    
 
 }   
