@@ -45,16 +45,19 @@ export class Player extends Phaser.Physics.Arcade.Image{
             this.scene.enemies,            
             (bullet, enemy)=>{
                 
-                enemy.play("explotion",true)
-                enemy.runEx();
                 
+                bullet.destroy();
+                enemy.runEx();
+
+                enemy.selfDestruction();
+
+                /*
                 enemy.body.enable = false;
+                
                 enemy.setVisible(true);
-
-
                 enemy.shootEvent.remove();
                 enemy.acceleration();
-                bullet.destroy();
+                */
                 
                 
 
@@ -63,6 +66,8 @@ export class Player extends Phaser.Physics.Arcade.Image{
             this.scene
         );
     }
+
+    
 
     hurt(){
         this.scene.lives -=1;

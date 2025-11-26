@@ -43,7 +43,7 @@ export class Level1 extends Phaser.Scene{
         this.anims.create({
             key: 'explotion',
             frames: this.anims.generateFrameNames('sprites', {prefix:'explot000', start:1, end:3}),
-            frameRate: 4,
+            frameRate: 10,
             repeat:0
         })
       
