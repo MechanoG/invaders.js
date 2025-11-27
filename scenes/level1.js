@@ -44,7 +44,7 @@ export class Level1 extends Phaser.Scene{
             key: 'explotion',
             frames: this.anims.generateFrameNames('sprites', {prefix:'explot000', start:1, end:3}),
             frameRate: 10,
-            repeat:0
+            repeat : 0
         })
       
         //Jugador
@@ -123,5 +123,4 @@ export class Level1 extends Phaser.Scene{
     }
 
     
-
 }   

@@ -1,7 +1,7 @@
 //Objeto de jugador
 import { Bullet } from "./bullet.js";
 
-export class Player extends Phaser.Physics.Arcade.Image{
+export class Player extends Phaser.Physics.Arcade.Sprite{
     constructor(scene, x, y){
 
         super(scene, x, y, "sprites","player0000");
@@ -13,6 +13,7 @@ export class Player extends Phaser.Physics.Arcade.Image{
         this.setDisplaySize(45,50);
 
         this.setCollideWorldBounds(true);
+        this.setImmovable(true);
 
         this.cooldown = 500;
         this.lastShot = 0;
@@ -22,7 +23,8 @@ export class Player extends Phaser.Physics.Arcade.Image{
         
     }
 
-    preUpdate(time){
+    preUpdate(time, delta){
+        super.preUpdate(time, delta);       
 
         if(this.cursor.left.isDown){
             this.setVelocityX(-400);
@@ -45,21 +47,9 @@ export class Player extends Phaser.Physics.Arcade.Image{
             this.scene.enemies,            
             (bullet, enemy)=>{
                 
-                
                 bullet.destroy();
                 enemy.runEx();
-
-                enemy.selfDestruction();
-
-                /*
-                enemy.body.enable = false;
-                
-                enemy.setVisible(true);
-                enemy.shootEvent.remove();
-                enemy.acceleration();
-                */
-                
-                
+                enemy.selfDestruction();              
 
             },
             null,
@@ -67,15 +57,27 @@ export class Player extends Phaser.Physics.Arcade.Image{
         );
     }
 
-    
-
     hurt(){
+
         this.scene.lives -=1;
         this.scene.livesText.setText(this.scene.lives);
-        this.setPosition(600, 750);
+        this.runEx();
+        this.scene.time.delayedCall(300, ()=>{
+            this.setTexture("sprites","player0000");
+            this.setPosition(600, 750);
+            
+        })
+
+        
+        
+        
+        
+        
+
     }
 
-    
-
+    runEx(){
+        this.scene.runExplotion(this);
+    }
 
 }

@@ -48,13 +48,8 @@ export class Enemy1 extends Phaser.Physics.Arcade.Sprite{
             this.scene.player,            
             (bullet, player,)=>{
                 
-                
-                player.body.enable = false;
-                player.setVisible(false);
-                
-                
-                player.hurt();
                 bullet.destroy();
+                player.hurt();                
                
 
             },
